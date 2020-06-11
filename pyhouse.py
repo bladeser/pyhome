@@ -27,8 +27,9 @@ class PyhouseConnector(object):
 
     def construct_query(self, query, kwargs):
         for arg in kwargs:
+            print('arg', arg)
             query = query.replace('@' + arg, self.convert_arg(kwargs[arg])['value'])
-            return query
+        return query
        
     def execute_sql(self, query, **kwargs):
         query = self.construct_query(query, kwargs)
